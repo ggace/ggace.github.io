@@ -3,8 +3,21 @@
 /* Cool font from Google Fonts! */
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 
+
+#main{
+	height: 100%;
+	width: 100%;
+	
+	
+}
+
 h1{
 	font-family: 'Raleway', sans-serif;
+}
+
+body{
+	background-color:black;
+	color: white;
 }
 
 html, body {

@@ -3,6 +3,7 @@
 */
 
 const container = document.getElementById('container')
+const content = document.getElementById('content')
 
 const elts = {
 	text1: document.getElementById("text1"),
@@ -24,6 +25,7 @@ let cooldown = cooldownTime;
 
 
 let containerHeight = 100;
+let contentHeight = 0;
 
 function doMorph() {
 	morph -= cooldown;
@@ -120,24 +122,44 @@ function begin(showTexts = []){
 
 let plus = 0.2;
 
+function setDisplay(){
+	
+	
+	document.body.style.backgroundColor="white";
+	document.body.style.color="black";
+	container.style.backgroundColor="black"
+	container.style.color="white"
+}
+
 function setHeightContainer() {
 	requestAnimationFrame(setHeightContainer);
 
 	if(containerHeight <= 10){
-		
+		setDisplay();
 		return 0;
 	}
-	container.style.height = (containerHeight-plus).toString() + "%"
+	container.style.height = (containerHeight-plus).toString() + "%";
+	content.style.height = (contentHeight+plus).toString() + "%";
 	
-	containerHeight = parseInt(container.style.height);
-	
-
+	containerHeight -= plus;
+	contentHeight += plus;
 }
 
+class Img extends React.Component {
+	render(){
+	  
+	  return (
+		<img href={this.props.href}>{this.props.children}</img>
+	  );
+	}
+  }
+
+  ReactDOM.render(<Img href="../sources/네이버.png">네이버</Img>, content);
 // Start the animation.
 begin([
 	"Post Corona-19", "Tour Guide", "Mini Book", "to", "Pangyo-dong,", "Bundang-gu,", "Seongnam-si", "with My Dream,", "Programmer", "Tour Guide to Pangyo-dong"
 ]);
+
 
 
 

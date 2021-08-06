@@ -11,18 +11,21 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css " type="text/css" media="all" charset="utf-8">
-        
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     </head>
     <body>
         
         <!-- Explanation in JS tab -->
-        
-        <!-- The two texts -->
-        <div id="container">
-            <h1 id="text1"></h1>
-            <h1 id="text2"></h1>
-        </div>
+        <div id="main">
+            <!-- The two texts -->
+            <div id="container">
+                <h1 id="text1"></h1>
+                <h1 id="text2"></h1>
+            </div>
 
+            <div id="content"></div>
+        </div
         <!-- The SVG filter used to create the merging effect -->
         <svg id="filters">
             <defs>
