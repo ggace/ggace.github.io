@@ -2,6 +2,8 @@
 	This pen cleverly utilizes SVG filters to create a "Morphing Text" effect. Essentially, it layers 2 text elements on top of each other, and blurs them depending on which text element should be more visible. Once the blurring is applied, both texts are fed through a threshold filter together, which produces the "gooey" effect. Check the CSS - Comment the #container rule's filter out to see how the blurring works!
 */
 
+const container = document.getElementById('container')
+
 const elts = {
 	text1: document.getElementById("text1"),
 	text2: document.getElementById("text2")
@@ -18,6 +20,10 @@ let textIndex = texts.length - 1;
 let time = new Date();
 let morph = 0;
 let cooldown = cooldownTime;
+
+
+
+let containerHeight = 100;
 
 function doMorph() {
 	morph -= cooldown;
@@ -71,8 +77,9 @@ function doAct(){
 			textIndex++;
 		}
 		if(textIndex % texts.length == texts.length-1){
-      return 0;
-    }
+			setTimeout(setHeightContainer(), 10000);
+			return 0;
+		}
 		doMorph();
 	} else {
 		doCooldown();
@@ -111,7 +118,27 @@ function begin(showTexts = []){
   animate()
 }
 
+let plus = 0.2;
+
+function setHeightContainer() {
+	requestAnimationFrame(setHeightContainer);
+
+	if(containerHeight <= 10){
+		
+		return 0;
+	}
+	container.style.height = (containerHeight-plus).toString() + "%"
+	
+	containerHeight = parseInt(container.style.height);
+	
+
+}
+
 // Start the animation.
 begin([
 	"Post Corona-19", "Tour Guide", "Mini Book", "to", "Pangyo-dong,", "Bundang-gu,", "Seongnam-si", "with My Dream,", "Programmer", "Tour Guide to Pangyo-dong"
 ]);
+
+
+
+
